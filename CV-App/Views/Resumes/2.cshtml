@@ -1,0 +1,21 @@
+﻿@model CV_App.ViewModels.SectionVM
+
+@{
+    ViewData["Title"] = "Section";
+}
+
+<form asp-action="Section" enctype="multipart/form-data" class="d-flex flex-column resumecontainer mb-3">
+
+    <!--Inputs not to be shown in View are stored here-->
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="ResumeId" />
+    <!---------------------------------------------------->
+    <input type="text" asp-for="Label" />
+
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

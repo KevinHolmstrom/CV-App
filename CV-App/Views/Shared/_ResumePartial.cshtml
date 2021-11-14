@@ -1,0 +1,37 @@
+﻿@model CV_App.ViewModels.ResumeVM
+
+
+<div class="d-flex flex-column resumecontainer mb-3">
+    <div class="resumeheader bg-sec text-white d-flex justify-content-center align-items-center"><h4 class="name">@Model.Title</h4></div>
+    <div class="h-100 d-flex flex-row resumetext bg-white">
+        <div class="h-100 leftresumecolumn">
+            <img src="@("~/Profiles/" + Model.ProfilePath)" asp-append-version="true" class="resumesection profileimage" />
+            <section class="resumesection contacts">
+                @foreach(var section in Model.Sections)
+                {
+                    if (section.IsInLeftSection)
+                    {
+                        <label>@(section.Label)</label>
+                        foreach(var textrow in section.TextRows)
+                        {
+                            <p>@(textrow)</p>
+                        }
+                    }
+                }
+            </section>
+        </div>
+        <div class="w-100 h-100 rightresumecolumn">
+            @foreach(var section in Model.Sections)
+            {
+                if (!section.IsInLeftSection)
+                {
+                    <label>@(section.Label)</label>
+                    foreach(var textrow in section.TextRows)
+                    {
+                        <p>@(textrow)</p>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

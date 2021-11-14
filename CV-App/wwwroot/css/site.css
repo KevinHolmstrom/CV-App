@@ -1,0 +1,285 @@
+﻿
+/*Variables and global*/
+
+:root{
+    --primary-color:rgb(0, 156, 117);
+    --secondary-color:rgb(46, 78, 114);
+    --triary-color: gray;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2{
+    font-weight:600;
+}
+    
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+input{
+  background:rgba(255, 255, 255, 0.1);
+  border:none;
+  color:inherit;
+}
+
+body{
+    background-color:rgb(224, 224, 224);
+}
+
+main{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  width:100%;
+}
+
+nav {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    background-color: white;
+}
+
+
+
+/*Resume Styling*/
+
+.name {
+    font-family: 'Source Serif Pro', serif!important;
+    font-weight:300;
+    letter-spacing:0.15em;
+    font-size:2.5em;
+    margin:0;
+    padding:0;
+}
+
+.resumecontainer {
+    width: 50em;
+    height: 72em;
+    margin: 2em;
+    padding: 0;
+    font-size: 10px;
+    box-shadow: 0 4em 5em -3em rgba(6, 44, 56, 0.55);
+    border-radius:1em;
+}
+
+
+.resumeheader{
+    width:100%;
+    height:15%;
+}
+
+.resumetext{
+    padding:2em 0em;
+}
+
+.leftresumecolumn{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    border-right: var(--secondary-color) 1px dashed;
+    padding:0 1em;
+    width:20em;
+}
+
+.resumesection{
+    display:flex;
+    flex-direction:column;
+    margin:2em 0;
+    padding-left:0.2em;
+}
+
+    .resumesection label {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-bottom: 0.2em;
+    }
+
+.resumesection p{
+    font-size: 1.25em;
+    margin-bottom:0.005em;
+}
+
+.profileimage {
+    width: 14em;
+    height: 14em;
+}
+
+    .profileimage img {
+        height: 14em;
+        border-radius: 50%;
+        border: solid var(--secondary-color) 0.25em;
+    }
+
+.rightresumecolumn {
+    align-items: center;
+}
+
+.rightresumecolumn label{
+    font-size: 2em;
+    text-align:center;
+}
+
+.rightresumecolumn p {
+    text-align: center;
+}
+
+/*Create section view styling*/
+
+.sectionInputBox {
+    border: solid gray 1px;
+    box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.30);
+}
+/*Custom BG colors*/
+.bg-prim {
+    background-color: var(--primary-color);
+}
+.bg-sec{
+  background-color: var(--secondary-color);
+  }
+
+/*Buttons*/
+
+.button-primary {
+    color: black;
+    border: black 2px solid;
+    border-radius: 1em;
+    background-color: none !important;
+    padding: 0.35em 0.7em 0.45em 0.7em;
+    transition: 150ms ease-in-out;
+    box-shadow: 0 0.55em 1em -0.45em rgba(0, 27, 21, 0.50);
+    cursor: pointer;
+    font-weight:600;
+}
+
+.button-primary:hover{
+    color:black;
+    text-decoration:none;
+    transform:scale(1.05);
+}
+
+.black-hover:hover{
+    color:white;
+    background:black;
+}
+.black-hover:focus {
+    color: white;
+    background: black;
+    outline:none;
+}
+
+.browse-button{
+    color:black;
+    font-weight:600;
+}
+.browse-button:hover{
+    text-decoration:underline;
+    color:black;
+}
+
+.SaveSectionChangesButton {
+    padding: 0.5em 0;
+    position:absolute;
+    height:100%;
+    width:100%;
+    left: 100%;
+}
+
+.CTA-Button {
+    transition: ease 300ms;
+    font-size: 24px;
+    font-weight:600;
+    padding: 0.5em 1.5em;
+    border-radius: 1em;
+    border:solid black 4px;
+    color:black;
+    box-shadow: 0 0.55em 1em -0.45em rgba(0, 0, 0, 0.50);
+}
+.CTA-Button:hover{
+    color:white;
+    background:black;
+    transform:scale(1.05);
+}
+
+    .CTA-Button:hover .fa-chevron-right{
+        transform:translateX(8px);
+    }
+
+
+.deleteButton{
+
+}
+    .fa-chevron-right{
+        transition:ease-in-out 300ms;
+    }
+
+    /*Shadow*/
+    .boxshadow {
+        box-shadow: 0 0.025em 0.5em -0.01em rgba(0, 27, 21, 0.25);
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}

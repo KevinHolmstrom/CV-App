@@ -1,0 +1,79 @@
+﻿@model CV_App.ViewModels.ResumeVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" enctype="multipart/form-data" class="d-flex flex-column resumecontainer mb-3">
+
+    <!--Inputs not to be shown in View are stored here-->
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="UserCookieId" />
+    <input type="hidden" asp-for="ProfilePath" />
+    <!---------------------------------------------------->
+
+    <div class="resumeheader bg-sec text-white d-flex justify-content-center align-items-center"><input asp-for="Title" class="name" /></div>
+    <div class="h-100 d-flex flex-row resumetext bg-white">
+        <div class="h-100 leftresumecolumn">
+            <div class="profileimage resumesection">
+                <img src="@("~/Profiles/" + Model.ProfilePath)" id="imgpreview"  asp-append-version="true"/>
+            </div>
+                <input onchange="showpreview(this)" asp-for="ProfilePicture" accept="Profiles/*"/>
+                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+            
+            @foreach (var SectionVM in Model.Sections.Where(q => q.IsInLeftSection == true))
+            {
+                <section style="border:solid gray 0.25px" class="resumesection">
+                    <label>@SectionVM.Label <a class="text-danger deleteButton" asp-action="DeleteSection" asp-route-id="@SectionVM.Id">x</a></label>
+                @foreach (var textrow in SectionVM.TextRows) 
+                { 
+                        <p>@textrow</p>
+                }
+                </section>
+            }
+
+            <section class="resumesection">
+                <a asp-controller="Resumes" asp-action="ConstructSection" asp-route-isInLeftSection="@true">Create a Section</a>
+            </section>
+           
+        </div>
+        <div class="w-100 h-100 rightresumecolumn">
+            @foreach (var SectionVM in Model.Sections.Where(q => q.IsInLeftSection == false))
+            {
+            <section style="border:solid gray 0.25px" class="resumesection">
+                <label>@SectionVM.Label <a class="text-danger deleteButton" asp-action="DeleteSection" asp-route-id="@SectionVM.Id">x</a></label>
+                @foreach (var textrow in SectionVM.TextRows)
+                {
+                    <p>@textrow</p>
+                }
+                
+            </section>
+            }
+            <a asp-controller="Resumes" asp-action="ConstructSection" asp-route-isInLeftSection="@false">Create a Section</a>
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Save Changes" id="SaveBtn" />
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    function showpreview(input) {
+
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgpreview').css('visibility', 'visible');
+                $('#imgpreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

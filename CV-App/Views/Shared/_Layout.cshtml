@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ResumeBuilder</title>
+    <partial name="_LinkPartial" />
+</head>
+<body>
+    <header>
+        <nav style="padding:20px 200px">
+            <a style="margin:0em auto 0em 0em; color:black;" asp-controller="Home" asp-action="Index"><h5 class="button-primary">Resume<span style="color:dimgray">Guy</span></h5></a>
+            <a asp-controller="Resumes" asp-action="Index" class="browse-button mr-5">Browse</a>
+            <a asp-controller="Resumes" asp-action="Create" class="black-hover button-primary mr-4">Create Your Resume</a>
+        </nav>
+    </header>
+    <div class="container">
+        <main data-aos="zoom-in-up" class="h-100" role="main">
+            @RenderBody()
+        </main> 
+    </div>
+
+
+    <partial name="_ScriptPartial" />
+        <script>
+            AOS.init();
+        </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

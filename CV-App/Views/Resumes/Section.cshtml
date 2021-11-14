@@ -1,0 +1,39 @@
+﻿@model CV_App.ViewModels.SectionVM
+
+@{
+    ViewData["Title"] = "Section";
+}
+<div class="d-flex flex-column align-items-center">
+    <h3>Create A Section</h3>
+    <hr />
+
+    <div style="box-shadow: 0px 0px 18px -5px rgba(0,0,0,0.30); padding:2em;" class="bg-white">
+        <form asp-action="Section" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ResumeId" />
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="IsInLeftSection" />
+
+
+            <label><b>Label:</b></label>
+            <div>
+                <input class="sectionInputBox mb-3" asp-for="Label" />
+                <input class="sectionInputBox" type="submit" value="Save Changes" id="SaveBtn" />
+            </div>
+
+
+            @foreach (var textrow in Model.TextRows)
+            {
+                <p>@textrow</p>
+            }
+        </form>
+
+        <form method="post" asp-controller="Resumes" asp-route-Id="@Model.Id" asp-action="AddTextSection">
+            <input class="sectionInputBox" type="text" name="text" />
+            <input value="Add Text" class="sectionInputBox" type="submit" title="addTextrow" />
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
